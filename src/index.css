@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+  font-feature-settings: 'ss01' on;
+}
+
+::selection {
+  @apply bg-brand-200 text-brand-900;
+}
+
+/* Slim, unobtrusive scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-200 rounded-full;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
