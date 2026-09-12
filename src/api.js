@@ -3,7 +3,16 @@ import { API_BASE_URL } from './config'
 
 const client = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000
+  timeout: 15000,
+  headers: {
+    // Free ngrok tunnels (*.ngrok-free.app/.dev) show an HTML "Visit Site"
+    // warning interstitial for every request instead of forwarding it to
+    // the backend, unless this header is present. That interstitial has no
+    // CORS headers, which is what actually surfaces as a browser CORS error
+    // even though the backend's @CrossOrigin("*") is fine. Harmless to send
+    // this against a non-ngrok backend too — it's simply ignored.
+    'ngrok-skip-browser-warning': 'true'
+  }
 })
 
 /**
